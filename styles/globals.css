@@ -1,3 +1,11 @@
+:root {
+  --shadow-yellow-inner: #facc15;
+  --shadow-yellow-outter: #fef08a;
+  --shadow-red-inner: #f87171;
+  --shadow-red-outter: #fecaca;
+  --shadow-lime-inner: #a3e635;
+  --shadow-lime-outter: #d9f99d;
+}
 html,
 body {
   padding: 0;
@@ -21,4 +29,30 @@ a {
 
 #map {
   height: 100%;
+}
+
+#svg-glow {
+  color: #ffff00;
+}
+#svg-glow img {
+  animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
+  border-radius: 50%;
+}
+
+.svg-shadow-yellow {
+  animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes svg-shadow-yellow {
+  from {
+    filter: drop-shadow(0 0 0.5rem var(--shadow-yellow-inner))
+      drop-shadow(0 0 1rem var(--shadow-yellow-outter))
+      drop-shadow(0 0 1.2rem var(--shadow-yellow-outter));
+  }
+
+  to {
+    filter: drop-shadow(0 0 1.2rem var(--shadow-yellow-inner))
+      drop-shadow(0 0 1.5rem var(--shadow-yellow-outter))
+      drop-shadow(0 0 2rem var(--shadow-yellow-outter));
+  }
 }
