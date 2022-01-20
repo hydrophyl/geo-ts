@@ -9,6 +9,86 @@ var svg = [
 var svg_yellow = svg.replace("{{ color }}", "#facc15");
 var svg_red = svg.replace("{{ color }}", "#f87171");
 var svg_lime = svg.replace("{{ color }}", "#a3e635");
+const mapStyleLight = [
+  {
+    featureType: "administrative",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#444444",
+      },
+    ],
+  },
+  {
+    featureType: "landscape",
+    elementType: "all",
+    stylers: [
+      {
+        color: "#f2f2f2",
+      },
+    ],
+  },
+  {
+    featureType: "poi",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "road",
+    elementType: "all",
+    stylers: [
+      {
+        saturation: -100,
+      },
+      {
+        lightness: 45,
+      },
+    ],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "simplified",
+      },
+    ],
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "labels.icon",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "transit",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "water",
+    elementType: "all",
+    stylers: [
+      {
+        color: "#e0f2fe",
+      },
+      {
+        visibility: "on",
+      },
+    ],
+  },
+];
 const Home = () => {
   const MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY as string;
   useEffect(() => {
@@ -26,86 +106,7 @@ const Home = () => {
         mapTypeControl: false, // remove the top-left buttons
         streetViewControl: false, // remove the pegman
         zoomControl: false, // remove the bottom-right buttons
-        styles: [
-          {
-            featureType: "administrative",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#444444",
-              },
-            ],
-          },
-          {
-            featureType: "landscape",
-            elementType: "all",
-            stylers: [
-              {
-                color: "#f2f2f2",
-              },
-            ],
-          },
-          {
-            featureType: "poi",
-            elementType: "all",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "road",
-            elementType: "all",
-            stylers: [
-              {
-                saturation: -100,
-              },
-              {
-                lightness: 45,
-              },
-            ],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "all",
-            stylers: [
-              {
-                visibility: "simplified",
-              },
-            ],
-          },
-          {
-            featureType: "road.arterial",
-            elementType: "labels.icon",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "transit",
-            elementType: "all",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "water",
-            elementType: "all",
-            stylers: [
-              {
-                color: "#e0f2fe",
-              },
-              {
-                visibility: "on",
-              },
-            ],
-          },
-        ],
+        styles: mapStyleLight,
       });
       let yellowMarkerOptions = {
         map: map,
