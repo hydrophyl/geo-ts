@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
   --shadow-yellow-inner: #facc15;
   --shadow-yellow-outter: #fef08a;
@@ -31,18 +34,13 @@ a {
   height: 100%;
 }
 
-#svg-glow {
-  color: #ffff00;
-}
-#svg-glow img {
+#marker-layer:nth-child(4) {
   animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
-  border-radius: 50%;
 }
 
 .svg-shadow-yellow {
   animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
 }
-
 @keyframes svg-shadow-yellow {
   from {
     filter: drop-shadow(0 0 0.5rem var(--shadow-yellow-inner))
@@ -54,5 +52,35 @@ a {
     filter: drop-shadow(0 0 1.2rem var(--shadow-yellow-inner))
       drop-shadow(0 0 1.5rem var(--shadow-yellow-outter))
       drop-shadow(0 0 2rem var(--shadow-yellow-outter));
+  }
+}
+.svg-shadow-red {
+  animation: svg-shadow-red 1.5s ease-in-out infinite alternate;
+}
+@keyframes svg-shadow-red {
+  from {
+    filter: drop-shadow(0 0 0.2rem var(--shadow-red-inner))
+      drop-shadow(0 0 0.5rem var(--shadow-red-outter))
+      drop-shadow(0 0 0.8rem var(--shadow-red-outter));
+  }
+
+  to {
+    filter: drop-shadow(0 0 0.8rem var(--shadow-red-inner))
+      drop-shadow(0 0 1rem var(--shadow-red-outter))
+      drop-shadow(0 0 1.2rem var(--shadow-red-outter));
+  }
+}
+
+@keyframes svg-shadow-lime {
+  from {
+    filter: drop-shadow(0 0 0.2rem var(--shadow-lime-inner))
+      drop-shadow(0 0 0.5rem var(--shadow-lime-outter))
+      drop-shadow(0 0 0.8rem var(--shadow-lime-outter));
+  }
+
+  to {
+    filter: drop-shadow(0 0 0.8rem var(--shadow-lime-inner))
+      drop-shadow(0 0 1rem var(--shadow-lime-outter))
+      drop-shadow(0 0 1.2rem var(--shadow-lime-outter));
   }
 }
