@@ -158,7 +158,7 @@ const Home = () => {
       });
       var overlay = new google.maps.OverlayView();
       overlay.draw = function () {
-        this.getPanes().markerLayer.id = "marker-layer";
+        this.getPanes()!.markerLayer.id = "marker-layer";
       };
       overlay.setMap(map);
     });
