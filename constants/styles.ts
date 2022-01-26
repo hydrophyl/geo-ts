@@ -4,7 +4,7 @@ export var svg = [
 ].join("\n");
 export var svg_yellow = svg.replace("{{ color }}", "#facc15");
 export var svg_red = svg.replace("{{ color }}", "#f87171");
-export var svg_lime = svg.replace("{{ color }}", "#a3e635");
+export var svg_dark = svg.replace("{{ color }}", "#0f172a");
 export const mapStyleLight = [
   {
     featureType: "administrative",

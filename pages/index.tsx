@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { cities } from "../mocks/cities";
 import { Loader } from "@googlemaps/js-api-loader";
-import {svg_yellow, svg_red, svg_lime, mapStyleLight} from '../constants/styles'
+import {svg_yellow, svg_red, svg_dark, mapStyleLight} from '../constants/styles'
+import {useAEs} from '@/lib/swr-hooks'
 
 const Home = () => {
   const MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY as string;
+  const {aes, isLoading} = useAEs()
+  if (isLoading) {
+    return <>Loading ...</>
+  }
   useEffect(() => {
     const loader = new Loader({
       apiKey: MAP_API_KEY,
@@ -41,35 +45,33 @@ const Home = () => {
         },
         optimized: false,
       };
-      let limeMarkerOptions = {
+      let darkMarkerOptions = {
         map: map,
         icon: {
           url:
-            "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_lime),
+            "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_dark),
           scaledSize: new google.maps.Size(20, 20),
         },
         optimized: false,
       };
-      var yellowMarker = new google.maps.Marker(limeMarkerOptions);
-      yellowMarker.setPosition(new google.maps.LatLng(53.2, 9.957736));
-      cities.map((city, index) => {
-        if (city.density < 2) {
-          new google.maps.Marker({
-            ...redMarkerOptions,
-            position: new google.maps.LatLng(city.lat, city.lng),
-          });
-        } else if (city.density == 2) {
+      aes.map((ae, index) => {
+        if (ae.ae_countcontract > 20 && ae.ae_countcontract < 30) {
           new google.maps.Marker({
             ...yellowMarkerOptions,
-            position: new google.maps.LatLng(city.lat, city.lng),
+            position: new google.maps.LatLng(ae.lat, ae.lng),
           });
-        } else if (city.density > 2) {
+        } else if (ae.ae_countcontract < 80 && ae.ae_countcontract > 30) {
           new google.maps.Marker({
-            ...limeMarkerOptions,
-            position: new google.maps.LatLng(city.lat, city.lng),
+            ...redMarkerOptions,
+            position: new google.maps.LatLng(ae.lat, ae.lng),
+          });
+        } else if (ae.ae_countcontract > 80) {
+          new google.maps.Marker({
+            ...darkMarkerOptions,
+            position: new google.maps.LatLng(ae.lat, ae.lng),
           });
         }
-      });
+      }); 
       var overlay = new google.maps.OverlayView();
       overlay.draw = function () {
         this.getPanes()!.markerLayer.id = "marker-layer";

@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --shadow-yellow-inner: #facc15;
-  --shadow-yellow-outter: #fef08a;
-  --shadow-red-inner: #f87171;
-  --shadow-red-outter: #fecaca;
-  --shadow-lime-inner: #a3e635;
-  --shadow-lime-outter: #d9f99d;
+  --shadow-inner: #3b82f6;
+  --shadow-outter: #bfdbfe;
 }
 html,
 body {
@@ -35,52 +31,22 @@ a {
 }
 
 #marker-layer:nth-child(4) {
-  animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
+  animation: svg-shadow 1.5s ease-in-out infinite alternate;
 }
 
-.svg-shadow-yellow {
-  animation: svg-shadow-yellow 1.5s ease-in-out infinite alternate;
+.svg-shadow{
+  animation: svg-shadow 1.5s ease-in-out infinite alternate;
 }
-@keyframes svg-shadow-yellow {
+@keyframes svg-shadow{
   from {
-    filter: drop-shadow(0 0 0.5rem var(--shadow-yellow-inner))
-      drop-shadow(0 0 1rem var(--shadow-yellow-outter))
-      drop-shadow(0 0 1.2rem var(--shadow-yellow-outter));
+    filter: drop-shadow(0 0 0.5rem var(--shadow-inner))
+      drop-shadow(0 0 1rem var(--shadow-outter))
+      drop-shadow(0 0 1.2rem var(--shadow-outter));
   }
 
   to {
-    filter: drop-shadow(0 0 1.2rem var(--shadow-yellow-inner))
-      drop-shadow(0 0 1.5rem var(--shadow-yellow-outter))
-      drop-shadow(0 0 2rem var(--shadow-yellow-outter));
-  }
-}
-.svg-shadow-red {
-  animation: svg-shadow-red 1.5s ease-in-out infinite alternate;
-}
-@keyframes svg-shadow-red {
-  from {
-    filter: drop-shadow(0 0 0.2rem var(--shadow-red-inner))
-      drop-shadow(0 0 0.5rem var(--shadow-red-outter))
-      drop-shadow(0 0 0.8rem var(--shadow-red-outter));
-  }
-
-  to {
-    filter: drop-shadow(0 0 0.8rem var(--shadow-red-inner))
-      drop-shadow(0 0 1rem var(--shadow-red-outter))
-      drop-shadow(0 0 1.2rem var(--shadow-red-outter));
-  }
-}
-
-@keyframes svg-shadow-lime {
-  from {
-    filter: drop-shadow(0 0 0.2rem var(--shadow-lime-inner))
-      drop-shadow(0 0 0.5rem var(--shadow-lime-outter))
-      drop-shadow(0 0 0.8rem var(--shadow-lime-outter));
-  }
-
-  to {
-    filter: drop-shadow(0 0 0.8rem var(--shadow-lime-inner))
-      drop-shadow(0 0 1rem var(--shadow-lime-outter))
-      drop-shadow(0 0 1.2rem var(--shadow-lime-outter));
+    filter: drop-shadow(0 0 1.2rem var(--shadow-inner))
+      drop-shadow(0 0 1.5rem var(--shadow-outter))
+      drop-shadow(0 0 2rem var(--shadow-outter));
   }
 }
