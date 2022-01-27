@@ -3,8 +3,13 @@ import { Loader } from "@googlemaps/js-api-loader";
 import {
   svg_yellow,
   svg_red,
+  svg_red0,
+  svg_red1,
+  svg_red2,
+  svg_red3,
   svg_dark,
   mapStyleLight,
+  mapStyleDark,
 } from "../constants/styles";
 import { useAEs } from "@/lib/swr-hooks";
 
@@ -25,12 +30,12 @@ const Home = () => {
           document.getElementById("map") as HTMLElement,
           {
             center: { lat: 51.2, lng: 10.23 },
-            zoom: 7,
+            zoom: 8,
             fullscreenControl: false, // remove the top-right button
             mapTypeControl: false, // remove the top-left buttons
             streetViewControl: false, // remove the pegman
             zoomControl: false, // remove the bottom-right buttons
-            styles: mapStyleLight,
+            styles: mapStyleDark,
           }
         );
         let yellowMarkerOptions = {
@@ -52,6 +57,42 @@ const Home = () => {
           },
           optimized: false,
         };
+        let red0MarkerOptions = {
+          map: map,
+          icon: {
+            url:
+              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red0),
+            scaledSize: new google.maps.Size(20, 20),
+          },
+          optimized: false,
+        };
+        let red1MarkerOptions = {
+          map: map,
+          icon: {
+            url:
+              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red1),
+            scaledSize: new google.maps.Size(20, 20),
+          },
+          optimized: false,
+        };
+        let red2MarkerOptions = {
+          map: map,
+          icon: {
+            url:
+              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red2),
+            scaledSize: new google.maps.Size(20, 20),
+          },
+          optimized: false,
+        };
+        let red3MarkerOptions = {
+          map: map,
+          icon: {
+            url:
+              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red3),
+            scaledSize: new google.maps.Size(20, 20),
+          },
+          optimized: false,
+        };
         let darkMarkerOptions = {
           map: map,
           icon: {
@@ -63,6 +104,29 @@ const Home = () => {
           optimized: false,
         };
         aes.map((ae, index) => {
+          if (ae.ae_countcontract > 20 && ae.ae_countcontract < 40) {
+            new google.maps.Marker({
+              ...red0MarkerOptions,
+              position: new google.maps.LatLng(ae.lat, ae.lng),
+            });
+          } else if (ae.ae_countcontract > 40 && ae.ae_countcontract < 60) {
+            new google.maps.Marker({
+              ...red1MarkerOptions,
+              position: new google.maps.LatLng(ae.lat, ae.lng),
+            });
+          } else if (ae.ae_countcontract > 60 && ae.ae_countcontract < 80) {
+            new google.maps.Marker({
+              ...red2MarkerOptions,
+              position: new google.maps.LatLng(ae.lat, ae.lng),
+            });
+          } else if (ae.ae_countcontract > 80) {
+            new google.maps.Marker({
+              ...red3MarkerOptions,
+              position: new google.maps.LatLng(ae.lat, ae.lng),
+            });
+          }
+        });
+/*         aes.map((ae, index) => {
           if (ae.ae_countcontract > 20 && ae.ae_countcontract < 30) {
             new google.maps.Marker({
               ...yellowMarkerOptions,
@@ -79,7 +143,7 @@ const Home = () => {
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
           }
-        });
+        }); */
         var overlay = new google.maps.OverlayView();
         overlay.draw = function () {
           this.getPanes()!.markerLayer.id = "marker-layer";
