@@ -30,7 +30,7 @@ const Home = () => {
           document.getElementById("map") as HTMLElement,
           {
             center: { lat: 51.2, lng: 10.23 },
-            zoom: 8,
+            zoom: 7,
             fullscreenControl: false, // remove the top-right button
             mapTypeControl: false, // remove the top-left buttons
             streetViewControl: false, // remove the pegman
@@ -61,7 +61,8 @@ const Home = () => {
           map: map,
           icon: {
             url:
-              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red0),
+              "data:image/svg+xml;charset=UTF-8," +
+              encodeURIComponent(svg_red0),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
@@ -70,7 +71,8 @@ const Home = () => {
           map: map,
           icon: {
             url:
-              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red1),
+              "data:image/svg+xml;charset=UTF-8," +
+              encodeURIComponent(svg_red1),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
@@ -79,7 +81,8 @@ const Home = () => {
           map: map,
           icon: {
             url:
-              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red2),
+              "data:image/svg+xml;charset=UTF-8," +
+              encodeURIComponent(svg_red2),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
@@ -88,7 +91,8 @@ const Home = () => {
           map: map,
           icon: {
             url:
-              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red3),
+              "data:image/svg+xml;charset=UTF-8," +
+              encodeURIComponent(svg_red3),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
@@ -126,7 +130,7 @@ const Home = () => {
             });
           }
         });
-/*         aes.map((ae, index) => {
+        /*         aes.map((ae, index) => {
           if (ae.ae_countcontract > 20 && ae.ae_countcontract < 30) {
             new google.maps.Marker({
               ...yellowMarkerOptions,

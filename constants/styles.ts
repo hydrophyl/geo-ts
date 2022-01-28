@@ -95,13 +95,16 @@ export const mapStyleDark = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        saturation: 36,
+        visibility: "on",
       },
       {
-        color: "#e3e3e3",
+        saturation: 80,
       },
       {
-        lightness: 40,
+        color: "#444444",
+      },
+      {
+        lightness: 10,
       },
     ],
   },
@@ -110,7 +113,7 @@ export const mapStyleDark = [
     elementType: "labels.text.stroke",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
       {
         color: "#000000",
@@ -215,8 +218,9 @@ export const mapStyleDark = [
         visibility: "on",
       },
       {
-        color: "#fde68a",
+        color: "#fdba74",
       },
+      { lightness: "10" },
     ],
   },
   {
