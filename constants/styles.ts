@@ -2,14 +2,11 @@ export var svg = [
   '<?xml version="1.0"?>',
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="{{ color }}"> <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /> </svg>',
 ].join("\n");
-export var svg_yellow = svg.replace("{{ color }}", "#facc15");
-export var svg_red = svg.replace("{{ color }}", "#f87171");
-export var svg_dark = svg.replace("{{ color }}", "#0f172a");
 export var svg_red0 = svg.replace("{{ color }}", "#f87171");
 export var svg_red1 = svg.replace("{{ color }}", "#dc2626");
 export var svg_red2 = svg.replace("{{ color }}", "#991b1b");
 export var svg_red3 = svg.replace("{{ color }}", "#310606");
-export const mapStyleLight = [
+/* export const mapStyleLight = [
   {
     featureType: "administrative",
     elementType: "labels.text.fill",
@@ -88,7 +85,7 @@ export const mapStyleLight = [
       },
     ],
   },
-];
+]; */
 export const mapStyleDark = [
   {
     featureType: "all",

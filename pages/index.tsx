@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import {
-  svg_yellow,
-  svg_red,
   svg_red0,
   svg_red1,
   svg_red2,
   svg_red3,
-  svg_dark,
-  mapStyleLight,
   mapStyleDark,
 } from "../constants/styles";
 import { useAEs } from "@/lib/swr-hooks";
@@ -38,25 +34,6 @@ const Home = () => {
             styles: mapStyleDark,
           }
         );
-        let yellowMarkerOptions = {
-          map: map,
-          icon: {
-            url:
-              "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_yellow),
-            scaledSize: new google.maps.Size(20, 20),
-          },
-          optimized: false,
-        };
-        let redMarkerOptions = {
-          map: map,
-          icon: {
-            url:
-              "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg_red),
-            scaledSize: new google.maps.Size(20, 20),
-          },
-          optimized: false,
-        };
         let red0MarkerOptions = {
           map: map,
           icon: {
@@ -97,16 +74,6 @@ const Home = () => {
           },
           optimized: false,
         };
-        let darkMarkerOptions = {
-          map: map,
-          icon: {
-            url:
-              "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_dark),
-            scaledSize: new google.maps.Size(20, 20),
-          },
-          optimized: false,
-        };
         aes.map((ae, index) => {
           if (ae.ae_countcontract > 20 && ae.ae_countcontract < 40) {
             new google.maps.Marker({
@@ -130,24 +97,6 @@ const Home = () => {
             });
           }
         });
-        /*         aes.map((ae, index) => {
-          if (ae.ae_countcontract > 20 && ae.ae_countcontract < 30) {
-            new google.maps.Marker({
-              ...yellowMarkerOptions,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
-            });
-          } else if (ae.ae_countcontract < 80 && ae.ae_countcontract > 30) {
-            new google.maps.Marker({
-              ...redMarkerOptions,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
-            });
-          } else if (ae.ae_countcontract > 80) {
-            new google.maps.Marker({
-              ...darkMarkerOptions,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
-            });
-          }
-        }); */
         var overlay = new google.maps.OverlayView();
         overlay.draw = function () {
           this.getPanes()!.markerLayer.id = "marker-layer";
