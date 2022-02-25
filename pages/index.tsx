@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import axios from "axios";
 import {
   svg_red0,
   svg_red1,
@@ -7,20 +8,32 @@ import {
   svg_red3,
   mapStyleDark,
 } from "../constants/styles";
-import { useAEs } from "@/lib/swr-hooks";
 
 const Home = () => {
   const MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY as string;
-  const { aes, isLoading } = useAEs();
+  const [aes, setAes] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getData = async () => {
+    const data = await axios.get("/api/get-aes");
+    setAes(data.data);
+  };
+  setTimeout(() => {
+    setIsLoading(!isLoading);
+  }, 60000);
+  // init data
   useEffect(() => {
-    console.log(isLoading);
+    getData();
+  }, [isLoading]);
+
+  useEffect(() => {
     const loader = new Loader({
       apiKey: MAP_API_KEY,
       version: "weekly",
     });
-    let map;
+    let map; 
     loader.load().then(() => {
-      if (isLoading == false) {
+      if (aes != null) {
         const google = window.google;
         map = new google.maps.Map(
           document.getElementById("map") as HTMLElement,
@@ -104,7 +117,7 @@ const Home = () => {
         overlay.setMap(map);
       }
     });
-  });
+  }, [aes]);
 
   return (
     <div style={{ height: "100vh" }}>
