@@ -6,10 +6,10 @@ API_KEY='AIzaSyAJII_Ra02NnEC_GapY-czZen0wQMANIGM'
 gmaps_key = googlemaps.Client(key=API_KEY)
 
 db = mysql.connect(
-    host="192.168.1.117",
-    database="radioshark",
-    user="radioshark",
-    password="uT6)PdqPOI23fsd)§",
+    host="grsmysql01.mysql.database.azure.com",
+    database="db_radioshark",
+    user="mysqladmin",
+    password="RTouhz8t4827et",
 )
 
 cursor = db.cursor()
@@ -27,7 +27,7 @@ df1 = pd.DataFrame(cursor.fetchall(), columns = ['postcode'])
 #loop through postcodes, if not exists in saved postcodes then geocode, save in table tbl_postcodes
 for index, row in df.iterrows():
   ae_postcode = df.ae_postcode[index]
-  address = df.ae_postcode[index] + ', Germany'
+  address = str(df.ae_postcode[index]) + ', Germany'
   exists = False
   if ae_postcode in df1['postcode'].values:
     print(ae_postcode, df1['postcode'][index])
@@ -35,7 +35,6 @@ for index, row in df.iterrows():
     exists= True
   else:
     print("this post code will be added: ", ae_postcode)
-    continue
   if not exists:
     print("adding this postcode and its geocode to database")
     g = gmaps_key.geocode(address)

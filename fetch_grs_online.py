@@ -5,10 +5,10 @@ import pandas as pd
 #Connect with databases
 grs_online = pymssql.connect('10.90.6.22','grs_database_reader','%$jlk27NM_1','GRS_Online_AP8')
 radioshark = mysql.connect(
-    host="192.168.1.117",
-    database="radioshark",
-    user="radioshark",
-    password="uT6)PdqPOI23fsd)§",
+    host="grsmysql01.mysql.database.azure.com",
+    database="db_radioshark",
+    user="mysqladmin",
+    password="RTouhz8t4827et",
 )
 
 grs_cursor = grs_online.cursor()

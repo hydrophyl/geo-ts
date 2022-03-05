@@ -6,6 +6,10 @@ import {
   svg_red1,
   svg_red2,
   svg_red3,
+  svg_blue0,
+  svg_blue1,
+  svg_blue2,
+  svg_blue3,
   mapStyleDark,
 } from "../constants/styles";
 
@@ -47,42 +51,42 @@ const Home = () => {
             styles: mapStyleDark,
           }
         );
-        let red0MarkerOptions = {
+        let MarkerOption0= {
           map: map,
           icon: {
             url:
               "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_red0),
+              encodeURIComponent(svg_blue0),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
         };
-        let red1MarkerOptions = {
+        let MarkerOption1 = {
           map: map,
           icon: {
             url:
               "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_red1),
+              encodeURIComponent(svg_blue1),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
         };
-        let red2MarkerOptions = {
+        let MarkerOption2 = {
           map: map,
           icon: {
             url:
               "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_red2),
+              encodeURIComponent(svg_blue2),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
         };
-        let red3MarkerOptions = {
+        let MarkerOption3 = {
           map: map,
           icon: {
             url:
               "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(svg_red3),
+              encodeURIComponent(svg_blue3),
             scaledSize: new google.maps.Size(20, 20),
           },
           optimized: false,
@@ -90,22 +94,22 @@ const Home = () => {
         aes.map((ae, index) => {
           if (ae.ae_countcontract > 20 && ae.ae_countcontract < 40) {
             new google.maps.Marker({
-              ...red0MarkerOptions,
+              ...MarkerOption0,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
           } else if (ae.ae_countcontract > 40 && ae.ae_countcontract < 60) {
             new google.maps.Marker({
-              ...red1MarkerOptions,
+              ...MarkerOption1,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
           } else if (ae.ae_countcontract > 60 && ae.ae_countcontract < 80) {
             new google.maps.Marker({
-              ...red2MarkerOptions,
+              ...MarkerOption2,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
           } else if (ae.ae_countcontract > 80) {
             new google.maps.Marker({
-              ...red3MarkerOptions,
+              ...MarkerOption3,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
           }

@@ -6,6 +6,10 @@ export var svg_red0 = svg.replace("{{ color }}", "#f87171");
 export var svg_red1 = svg.replace("{{ color }}", "#dc2626");
 export var svg_red2 = svg.replace("{{ color }}", "#991b1b");
 export var svg_red3 = svg.replace("{{ color }}", "#310606");
+export var svg_blue0 = svg.replace("{{ color }}", "#93c5fd");
+export var svg_blue1 = svg.replace("{{ color }}", "#3b82f6");
+export var svg_blue2 = svg.replace("{{ color }}", "#1d4ed8");
+export var svg_blue3 = svg.replace("{{ color }}", "#1e3a8a");
 /* export const mapStyleLight = [
   {
     featureType: "administrative",
