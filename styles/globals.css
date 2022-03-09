@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --shadow-inner: #ea580c;
-  --shadow-outter: #ffedd5;
+  /* --shadow-inner: #ea580c; */
+  /* --shadow-outter: #ffedd5; */
+  --shadow-inner: #0ea5e9;
+  --shadow-outter: #e0f2fe;
 }
 html,
 body {
