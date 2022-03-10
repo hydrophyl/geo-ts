@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
 import {
-  svg_red0,
-  svg_red1,
-  svg_red2,
-  svg_red3,
   svg_blue0,
   svg_blue1,
   svg_blue2,
@@ -18,7 +14,7 @@ const Home = () => {
   const [aes, setAes] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getData = async () => {
+  const fetchData = async () => {
     const data = await axios.get("/api/get-aes");
     setAes(data.data);
   };
@@ -27,7 +23,7 @@ const Home = () => {
   }, 60000);
   // init data
   useEffect(() => {
-    getData();
+    fetchData();
   }, [isLoading]);
 
   useEffect(() => {
@@ -42,7 +38,9 @@ const Home = () => {
         map = new google.maps.Map(
           document.getElementById("map") as HTMLElement,
           {
+            // define where center of the map should be
             center: { lat: 51.2, lng: 10.23 },
+            // map zoom, for bigger screen 8
             zoom: 7,
             fullscreenControl: false, // remove the top-right button
             mapTypeControl: false, // remove the top-left buttons
@@ -91,23 +89,24 @@ const Home = () => {
           },
           optimized: false,
         };
+        // Define type of marker base on its time different
         aes.map((ae, index) => {
-          if (ae.ae_countcontract > 20 && ae.ae_countcontract < 40) {
+          if (ae.ae_timediff > 20 && ae.ae_timediff < 40) {
             new google.maps.Marker({
               ...MarkerOption0,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
-          } else if (ae.ae_countcontract > 40 && ae.ae_countcontract < 60) {
+          } else if (ae.ae_timediff > 40 && ae.ae_timediff < 60) {
             new google.maps.Marker({
               ...MarkerOption1,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
-          } else if (ae.ae_countcontract > 60 && ae.ae_countcontract < 80) {
+          } else if (ae.ae_timediff > 60 && ae.ae_timediff < 80) {
             new google.maps.Marker({
               ...MarkerOption2,
               position: new google.maps.LatLng(ae.lat, ae.lng),
             });
-          } else if (ae.ae_countcontract > 80) {
+          } else if (ae.ae_timediff > 80) {
             new google.maps.Marker({
               ...MarkerOption3,
               position: new google.maps.LatLng(ae.lat, ae.lng),
