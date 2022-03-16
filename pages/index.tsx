@@ -31,7 +31,7 @@ const Home = () => {
       apiKey: MAP_API_KEY,
       version: "weekly",
     });
-    let map; 
+    let map;
     loader.load().then(() => {
       if (aes != null) {
         const google = window.google;
@@ -49,7 +49,7 @@ const Home = () => {
             styles: mapStyleDark,
           }
         );
-        let MarkerOption0= {
+        let MarkerOption0 = {
           map: map,
           icon: {
             url:
@@ -124,7 +124,9 @@ const Home = () => {
 
   return (
     <div style={{ height: "100vh" }}>
-      <div id="map"></div>
+      <div id="map">
+        <div className="z-30 bg-green-400 w-4 h-4 absolute top-0 right-0"></div>
+      </div>
     </div>
   );
 };

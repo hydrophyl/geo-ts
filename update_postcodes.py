@@ -29,7 +29,7 @@ for index, row in df.iterrows():
     ae_postcode = df.ae_postcode[index]
     address = str(df.ae_postcode[index]) + ', Germany'
     exists = False
-    if ae_postcode in df1['postcode'].values:
+    if str(ae_postcode) in df1['postcode'].values:
         print(ae_postcode, df1['postcode'][index])
         print("this postcode is already in the database")
         exists = True
