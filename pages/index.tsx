@@ -94,22 +94,22 @@ const Home = () => {
           if (ae.ae_timediff > 20 && ae.ae_timediff < 40) {
             new google.maps.Marker({
               ...MarkerOption0,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
+              position: new google.maps.LatLng(ae.lat, ae.lon),
             });
           } else if (ae.ae_timediff > 40 && ae.ae_timediff < 60) {
             new google.maps.Marker({
               ...MarkerOption1,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
+              position: new google.maps.LatLng(ae.lat, ae.lon),
             });
           } else if (ae.ae_timediff > 60 && ae.ae_timediff < 80) {
             new google.maps.Marker({
               ...MarkerOption2,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
+              position: new google.maps.LatLng(ae.lat, ae.lon),
             });
           } else if (ae.ae_timediff > 80) {
             new google.maps.Marker({
               ...MarkerOption3,
-              position: new google.maps.LatLng(ae.lat, ae.lng),
+              position: new google.maps.LatLng(ae.lat, ae.lon),
             });
           }
         });

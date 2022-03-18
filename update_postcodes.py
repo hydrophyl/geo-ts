@@ -39,10 +39,10 @@ for index, row in df.iterrows():
         print("adding this postcode and its geocode to database")
         g = gmaps_key.geocode(address)
         lat = g[0]['geometry']['location']['lat']
-        lng = g[0]['geometry']['location']['lng']
-        print(ae_postcode, lat, lng)
-        insert_query = "INSERT INTO tbl_postcodes(postcode, lat, lng) VALUES( %s, %s, %s) "
-        insert_data = (str(ae_postcode), str(lat), str(lng))
+        lon = g[0]['geometry']['location']['lng']
+        print(ae_postcode, lat, lon)
+        insert_query = "INSERT INTO tbl_postcodes(postcode, lat, lon) VALUES( %s, %s, %s) "
+        insert_data = (str(ae_postcode), str(lat), str(lon))
         cursor.execute(insert_query, insert_data)
 
 cursor.close()
