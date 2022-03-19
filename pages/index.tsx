@@ -39,7 +39,8 @@ const Home = () => {
           document.getElementById("map") as HTMLElement,
           {
             // define where center of the map should be
-            center: { lat: 51.2, lng: 10.23 },
+            // 50.828538, 10.383900
+            center: { lat: 50.828538, lng: 10.383900 },
             // map zoom, for bigger screen 8
             zoom: 7,
             fullscreenControl: false, // remove the top-right button
