@@ -1,15 +1,23 @@
 import { NextApiHandler } from 'next';
-import { query } from '../../lib/db';
+
+function generateRandomLocationsInGermany(count: number) {
+  const locations = [];
+  for (let i = 0; i < count; i++) {
+    const lat = (Math.random() * (55.0581 - 47.2701)) + 47.2701; // Latitude range for Germany
+    const lon = (Math.random() * (15.0419 - 5.8663)) + 5.8663;  // Longitude range for Germany
+    locations.push({
+      lat: parseFloat(lat.toFixed(6)),
+      lon: parseFloat(lon.toFixed(6)),
+      weight: Math.floor(Math.random() * 100), // Random weight value
+    });
+  }
+  return locations;
+}
 
 const handler: NextApiHandler = async (_, res) => {
-  try {
-    const results = await query(`
-      SELECT lat, lon, ae_timediff FROM tbl_postcodes, tbl_fahrradbatterien WHERE ae_postcode=postcode
-    `);
-    return res.json(results);
-  } catch (e) {
-    res.status(500).json({ message: e.message });
-  }
+  // Mocked data
+  const results = generateRandomLocationsInGermany(50);
+  return res.json(results);
 };
 
 export default handler;

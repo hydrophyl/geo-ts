@@ -11,12 +11,12 @@ import {
 
 const Home = () => {
   const MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY as string;
-  const [aes, setAes] = useState(null);
+  const [locs, setLocs] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async () => {
     const data = await axios.get("/api/get-aes");
-    setAes(data.data);
+    setLocs(data.data);
   };
   setTimeout(() => {
     setIsLoading(!isLoading);
@@ -33,7 +33,7 @@ const Home = () => {
     });
     let map;
     loader.load().then(() => {
-      if (aes != null) {
+      if (locs != null) {
         const google = window.google;
         map = new google.maps.Map(
           document.getElementById("map") as HTMLElement,
@@ -90,27 +90,27 @@ const Home = () => {
           },
           optimized: false,
         };
-        // Define type of marker base on its time different
-        aes.map((ae, index) => {
-          if (ae.ae_timediff > 20 && ae.ae_timediff < 40) {
+        // Define type of marker base on its weight
+        locs.map((loc, index) => {
+          if (loc.weight > 20 && loc.weight < 40) {
             new google.maps.Marker({
               ...MarkerOption0,
-              position: new google.maps.LatLng(ae.lat, ae.lon),
+              position: new google.maps.LatLng(loc.lat, loc.lon),
             });
-          } else if (ae.ae_timediff > 40 && ae.ae_timediff < 60) {
+          } else if (loc.weight > 40 && loc.weight < 60) {
             new google.maps.Marker({
               ...MarkerOption1,
-              position: new google.maps.LatLng(ae.lat, ae.lon),
+              position: new google.maps.LatLng(loc.lat, loc.lon),
             });
-          } else if (ae.ae_timediff > 60 && ae.ae_timediff < 80) {
+          } else if (loc.weight > 60 && loc.weight < 80) {
             new google.maps.Marker({
               ...MarkerOption2,
-              position: new google.maps.LatLng(ae.lat, ae.lon),
+              position: new google.maps.LatLng(loc.lat, loc.lon),
             });
-          } else if (ae.ae_timediff > 80) {
+          } else if (loc.weight > 80) {
             new google.maps.Marker({
               ...MarkerOption3,
-              position: new google.maps.LatLng(ae.lat, ae.lon),
+              position: new google.maps.LatLng(loc.lat, loc.lon),
             });
           }
         });
@@ -121,7 +121,7 @@ const Home = () => {
         overlay.setMap(map);
       }
     });
-  }, [aes]);
+  }, [locs, MAP_API_KEY]);
 
   return (
     <div style={{ height: "100vh" }}>
