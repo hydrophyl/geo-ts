@@ -10,7 +10,7 @@ import {
 } from "../constants/styles";
 
 const Home = () => {
-  const MAP_API_KEY = process.env.NEXT_PUBLIC_API_KEY as string;
+  const MAP_API_KEY = process.env.MAP_API_KEY as string;
   const [locs, setLocs] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
